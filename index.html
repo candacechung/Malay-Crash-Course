@@ -26,20 +26,18 @@
             background: white;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             z-index: 1000;
-            
-            /* These lines enable horizontal scrolling on mobile */
             display: flex;
             overflow-x: auto; 
-            -webkit-overflow-scrolling: touch; /* Smooth scrolling for iOS */
-            scrollbar-width: none; /* Hides scrollbar on Firefox */
+            -webkit-overflow-scrolling: touch; 
+            scrollbar-width: none;
         }
         
         nav::-webkit-scrollbar {
-            display: none; /* Hides scrollbar on Chrome/Safari */
+            display: none;
         }
         
         nav a {
-            flex: 0 0 auto; /* Prevents the links from shrinking */
+            flex: 0 0 auto;
             padding: 15px 20px;
             text-decoration: none;
             color: #555;
@@ -164,7 +162,7 @@
             title: "Numbers",
             items: [
                 { m: "Berapa?", e: "How much?", p: "Be-rah-pah" },
-                { m: "Mahal sangat!", e: "Too expensive!", p: "Mah-hal sa-ngat" }
+                { m: "Mahal sangat!", e: "Too expensive!", p: "Mah-hal sa-ngat" },
                 { m: "Satu", e: "1", p: "Sah-too" },
                 { m: "Dua", e: "2", p: "Doo-ah" },
                 { m: "Tiga", e: "3", p: "Tee-gah" },
