@@ -3,107 +3,221 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>5-Day Malay Crash Course</title>
+    <title>Malay Travel Express</title>
     <style>
-        body { font-family: sans-serif; background: #f4f7f6; color: #333; margin: 0; padding: 20px; }
-        .container { max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 12px; shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        h1 { text-align: center; color: #00703c; } /* Malaysian Green */
-        .day-section { margin-bottom: 25px; border-bottom: 2px solid #eee; padding-bottom: 15px; }
-        h2 { color: #d32f2f; font-size: 1.2rem; }
-        .word-card { 
-            display: flex; align-items: center; justify-content: space-between;
-            background: #fff; border: 1px solid #ddd; margin: 8px 0; padding: 12px;
-            border-radius: 8px; cursor: pointer; transition: transform 0.1s;
+        :root {
+            --primary: #00703c; 
+            --secondary: #d32f2f; 
+            --bg: #f8f9fa;
         }
-        .word-card:active { transform: scale(0.98); background: #e8f5e9; }
-        .malay { font-weight: bold; color: #00703c; font-size: 1.1rem; }
-        .english { color: #666; font-size: 0.9rem; }
-        .phonetic { font-style: italic; color: #999; font-size: 0.8rem; }
-        .play-icon { font-size: 1.2rem; }
-        .info-box { background: #e3f2fd; padding: 10px; border-radius: 8px; font-size: 0.85rem; margin-top: 10px; }
+
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+            background: var(--bg); 
+            color: #333; 
+            margin: 0; 
+            padding-top: 70px; 
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            overflow-x: auto;
+            white-space: nowrap;
+            display: flex;
+            justify-content: flex-start;
+            padding: 0 10px;
+        }
+
+        nav a {
+            display: inline-block;
+            padding: 15px 15px;
+            text-decoration: none;
+            color: #555;
+            font-weight: bold;
+            font-size: 0.85rem;
+            border-bottom: 3px solid transparent;
+        }
+
+        nav a:active, nav a:hover {
+            color: var(--primary);
+            border-bottom: 3px solid var(--primary);
+        }
+
+        .container { 
+            max-width: 600px; 
+            margin: auto; 
+            padding: 20px; 
+        }
+
+        header { text-align: center; margin-bottom: 30px; }
+        
+        .day-section { 
+            margin-bottom: 40px; 
+            background: white; 
+            padding: 20px; 
+            border-radius: 15px; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        h2 { 
+            color: var(--secondary); 
+            border-left: 5px solid var(--primary); 
+            padding-left: 10px; 
+            margin-top: 0;
+        }
+
+        .word-card { 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between;
+            background: #fff; 
+            border: 1px solid #eee; 
+            margin: 10px 0; 
+            padding: 15px;
+            border-radius: 10px; 
+            cursor: pointer; 
+            transition: all 0.2s ease;
+        }
+
+        .word-card:hover { border-color: var(--primary); background: #f0fff4; }
+
+        .malay { font-weight: bold; color: var(--primary); font-size: 1.2rem; display: block; }
+        .english { color: #666; font-size: 0.95rem; }
+        .phonetic { font-style: italic; color: #999; font-size: 0.85rem; margin-top: 4px; }
+        
+        .play-btn {
+            background: var(--primary);
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
     </style>
 </head>
 <body>
 
+<nav id="top-nav"></nav>
+
 <div class="container">
-    <h1>🇲🇾 Malay in 5 Days</h1>
-    <p style="text-align:center; font-size: 0.9rem;">Tap any card to hear the pronunciation.</p>
+    <header>
+        <h1>🇲🇾 Malay Crash Course</h1>
+        <p>Ready for your trip in 5 days!</p>
+    </header>
 
     <div id="course-content"></div>
-
-    <div class="info-box">
-        <strong>Pro-Tip:</strong> Set your device's primary speech-to-text language to "Malay" in settings for the most authentic accent!
-    </div>
 </div>
 
 <script>
     const lessons = [
         {
-            day: "Day 1: Politeness & Survival",
+            id: "basics",
+            title: "Basics",
             items: [
                 { m: "Terima kasih", e: "Thank you", p: "Te-ree-mah ka-seh" },
                 { m: "Sama-sama", e: "You're welcome", p: "Sah-mah sah-mah" },
                 { m: "Tolong", e: "Please / Help", p: "Toh-long" },
-                { m: "Maaf", e: "Sorry / Excuse me", p: "Mah-ahf" },
-                { m: "Ya", e: "Yes", p: "Yah" },
-                { m: "Tidak", e: "No", p: "Tee-da'" }
+                { m: "Maaf", e: "Sorry", p: "Mah-ahf" },
+                { m: "Saya tak faham", e: "I don't understand", p: "Sah-yah tak fah-ham" },
+                { m: "Boleh", e: "Can / Possible", p: "Boh-leh" }
             ]
         },
         {
-            day: "Day 2: Greetings",
+            id: "greetings",
+            title: "Greetings",
             items: [
                 { m: "Selamat pagi", e: "Good morning", p: "Pah-gee" },
+                { m: "Selamat tengahari", e: "Good afternoon (12-2PM)", p: "Te-ngah-hah-ree" },
                 { m: "Selamat petang", e: "Good evening", p: "Puh-tang" },
-                { m: "Apa khabar?", e: "How are you?", p: "Ah-pah kah-bar" },
-                { m: "Khabar baik", e: "I am fine", p: "Kah-bar ba-ik" }
+                { m: "Selamat malam", e: "Good night", p: "Mah-lahm" },
+                { m: "Apa khabar?", e: "How are you?", p: "Ah-pah kah-bar" }
             ]
         },
         {
-            day: "Day 3: Shopping & Money",
+            id: "numbers",
+            title: "Numbers",
             items: [
-                { m: "Berapa?", e: "How much?", p: "Be-rah-pah" },
-                { m: "Mahal sangat", e: "Too expensive", p: "Mah-hal sa-ngat" },
-                { m: "Boleh kurang?", e: "Can discount?", p: "Boh-leh koo-rang" },
-                { m: "Tandas", e: "Toilet", p: "Tahn-dahs" }
+                { m: "Satu", e: "1", p: "Sah-too" },
+                { m: "Dua", e: "2", p: "Doo-ah" },
+                { m: "Tiga", e: "3", p: "Tee-gah" },
+                { m: "Empat", e: "4", p: "Um-paht" },
+                { m: "Lima", e: "5", p: "Lee-mah" },
+                { m: "Enam", e: "6", p: "Uh-nahm" },
+                { m: "Tujuh", e: "7", p: "Too-jooh" },
+                { m: "Lapan", e: "8", p: "Lah-pahn" },
+                { m: "Sembilan", e: "9", p: "Sum-bee-lahn" },
+                { m: "Sepuluh", e: "10", p: "Se-poo-looh" },
+                { m: "Dua puluh", e: "20", p: "Doo-ah poo-looh" },
+                { m: "Seratus", e: "100", p: "Se-rah-toos" },
+                { m: "Seribu", e: "1000", p: "Se-ree-boo" }
             ]
         },
         {
-            day: "Day 4: Dining",
+            id: "travel",
+            title: "Travel",
+            items: [
+                { m: "Di mana...?", e: "Where is...?", p: "Dee mah-nah" },
+                { m: "Tandas", e: "Toilet", p: "Tahn-dahs" },
+                { m: "Berapa?", e: "How much?", p: "Be-rah-pah" },
+                { m: "Kiri", e: "Left", p: "Kee-ree" },
+                { m: "Kanan", e: "Right", p: "Kah-nan" },
+                { m: "Jalan terus", e: "Go straight", p: "Jah-lan te-roos" }
+            ]
+        },
+        {
+            id: "food",
+            title: "Food",
             items: [
                 { m: "Makan", e: "Eat", p: "Mah-kan" },
                 { m: "Minum", e: "Drink", p: "Mee-num" },
+                { m: "Air kosong", e: "Plain water", p: "Ah-yer koh-song" },
                 { m: "Tak pedas", e: "Not spicy", p: "Tak puh-dahs" },
                 { m: "Kurang manis", e: "Less sweet", p: "Koo-rang mah-nees" },
-                { m: "Bil, tolong", e: "Bill, please", p: "Bill toh-long" }
+                { m: "Panas", e: "Hot", p: "Pah-nahs" },
+                { m: "Sejuk", e: "Cold", p: "Se-jook" }
             ]
         }
     ];
 
+    const nav = document.getElementById('top-nav');
+    const container = document.getElementById('course-content');
+
     function speak(text) {
         const utterance = new SpeechSynthesisUtterance(text);
-        utterance.lang = 'ms-MY'; // Sets language to Malay
-        utterance.rate = 0.9;     // Slightly slower for learning
+        utterance.lang = 'ms-MY';
+        utterance.rate = 0.85;
         window.speechSynthesis.speak(utterance);
     }
 
-    const container = document.getElementById('course-content');
-
     lessons.forEach(lesson => {
-        let section = document.createElement('div');
+        const link = document.createElement('a');
+        link.href = `#${lesson.id}`;
+        link.innerText = lesson.title;
+        nav.appendChild(link);
+
+        const section = document.createElement('div');
+        section.id = lesson.id;
         section.className = 'day-section';
-        section.innerHTML = `<h2>${lesson.day}</h2>`;
+        section.innerHTML = `<h2>${lesson.title}</h2>`;
         
         lesson.items.forEach(item => {
-            let card = document.createElement('div');
+            const card = document.createElement('div');
             card.className = 'word-card';
             card.onclick = () => speak(item.m);
             card.innerHTML = `
                 <div>
-                    <div class="malay">${item.m}</div>
-                    <div class="english">${item.e}</div>
+                    <span class="malay">${item.m}</span>
+                    <span class="english">${item.e}</span>
                     <div class="phonetic">${item.p}</div>
                 </div>
-                <div class="play-icon">🔊</div>
+                <div class="play-btn">▶</div>
             `;
             section.appendChild(card);
         });
